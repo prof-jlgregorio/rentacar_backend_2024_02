@@ -3,3 +3,11 @@ server:
 spring:
   application:
     name: RentaCar
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rentacar
+    username: postgres
+    password: postdba
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
