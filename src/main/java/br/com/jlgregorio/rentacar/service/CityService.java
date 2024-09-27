@@ -52,6 +52,11 @@ public class CityService {
         return CustomModelMapper.parseObjectList(cities, CityDto.class);
     }
 
+    public List<CityDto> findByState(String state){
+        var cities = repository.findByStateEqualsIgnoreCaseOrderByStateAscNameAsc(state);
+        return CustomModelMapper.parseObjectList(cities, CityDto.class);
+    }
+
 
 
 }

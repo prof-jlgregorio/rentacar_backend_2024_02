@@ -53,5 +53,11 @@ public class CityController {
         return new ResponseEntity<List<CityDto>>(cities, HttpStatus.OK);
     }
 
+    @GetMapping("/find/state/{state}")
+    public ResponseEntity<List<CityDto>> findByState(@PathVariable(name = "state") String state){
+        var cities = service.findByState(state);
+        return new ResponseEntity<List<CityDto>>(cities, HttpStatus.OK);
+    }
+
 
 }
