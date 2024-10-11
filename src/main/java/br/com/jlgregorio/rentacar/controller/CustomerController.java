@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     @Autowired
@@ -23,6 +25,24 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> findById(@PathVariable(name = "id") long id){
         CustomerDto customer = customerService.findById(id);
         return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<CustomerDto> update(@RequestBody CustomerDto customerDto){
+        CustomerDto customerUpdated = customerService.update(customerDto);
+        return new ResponseEntity<>(customerUpdated, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> delete(@PathVariable(name = "id") long id){
+        customerService.delete(id);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDto>> findAll(){
+        var customers = customerService.findAll();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
 }
