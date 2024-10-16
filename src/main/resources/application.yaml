@@ -20,4 +20,4 @@ springdoc:
   swagger-ui:
     use-root-path: true
     #disable-swagger-default-url: true
-    path: /swagger-ui
+    path: /docs-ui
